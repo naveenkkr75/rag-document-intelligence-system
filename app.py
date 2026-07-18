@@ -53,11 +53,55 @@ if "messages" not in st.session_state:
 # Upload Documents
 # ------------------------
 
+# ------------------------
+# Upload Documents
+# ------------------------
+
+if "uploaded_files" not in st.session_state:
+    st.session_state.uploaded_files = []
+
+
 uploaded_files = st.file_uploader(
     "Upload PDF, TXT or DOCX",
     type=["pdf", "txt", "docx"],
     accept_multiple_files=True
 )
+
+
+if uploaded_files:
+
+    for file in uploaded_files:
+
+        if file.name not in st.session_state.uploaded_files:
+
+            save_path = os.path.join(
+                UPLOAD_FOLDER,
+                file.name
+            )
+
+            with open(save_path, "wb") as f:
+                f.write(file.getbuffer())
+
+
+            with st.spinner(f"Indexing {file.name}..."):
+
+                indexed = index_document(save_path)
+
+
+            if indexed:
+                st.success(
+                    f"✅ {file.name} indexed successfully!"
+                )
+
+            else:
+                st.info(
+                    f"ℹ️ {file.name} already exists in database."
+                )
+
+
+            st.session_state.uploaded_files.append(
+                file.name
+            )
 
 
 if uploaded_files:
