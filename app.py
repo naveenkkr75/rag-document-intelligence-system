@@ -101,18 +101,41 @@ if uploaded_files:
 
             st.session_state.uploaded_files.append(
                 file.name
-            )
-
+            )# ------------------------
+# Upload Documents
+# ------------------------
 
 if uploaded_files:
 
-    for file in uploaded_files:
+    if st.button("Index Documents"):
 
-        save_path = os.path.join(
-            UPLOAD_FOLDER,
-            file.name
-        )
+        for file in uploaded_files:
 
+            save_path = os.path.join(
+                UPLOAD_FOLDER,
+                file.name
+            )
+
+            with open(save_path, "wb") as f:
+                f.write(file.getbuffer())
+
+
+            with st.spinner(f"Indexing {file.name}..."):
+
+                indexed = index_document(save_path)
+
+
+            if indexed:
+
+                st.success(
+                    f"✅ {file.name} indexed successfully!"
+                )
+
+            else:
+
+                st.info(
+                    f"ℹ️ {file.name} already exists in database."
+                )
 
         # Save file
 
