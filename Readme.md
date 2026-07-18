@@ -23,3 +23,98 @@ A Retrieval Augmented Generation (RAG) based document question-answering system 
 ---
 
 ## 🏗️ System Architecture
+                 User
+              |
+              |
+      Streamlit Interface
+              |
+              |
+    Upload Documents / Query
+              |
+    ----------------------
+    |                    |
+    |                    |
+
+Document Processing User Question
+| |
+| |
+PDF/TXT/DOCX Loader |
+| |
+Chunking |
+| |
+Embeddings |
+| |
+----------- |
+| |
+v v
+ChromaDB Vector Store
+|
+|
+Similarity Retrieval
+|
+|
+Context + Question
+|
+|
+Google Gemini LLM
+|
+|
+Final Answer
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+- Python
+- LangChain
+- Google Gemini API
+- ChromaDB
+
+### AI/ML
+- HuggingFace Sentence Transformers
+- Vector Embeddings
+- Retrieval Augmented Generation (RAG)
+
+### Frontend
+- Streamlit
+
+### Document Processing
+- PyPDF
+- Docx2txt
+- LangChain Document Loaders
+
+---
+
+## 📂 Project Structure
+rag-document-intelligence-system/
+
+│
+├── app.py # Streamlit application
+├── config.py # Configuration settings
+├── requirements.txt # Dependencies
+│
+├── utils/
+│ ├── llm.py # Gemini LLM configuration
+│ ├── embeddings.py # Embedding model
+│ ├── vectorstore.py # ChromaDB setup
+│ ├── retriever.py # Similarity search
+│ ├── indexer.py # Incremental indexing pipeline
+│ ├── file_tracker.py # Duplicate file detection
+│ ├── splitter.py # Text chunking
+│ ├── prompts.py # RAG prompts
+│ └── parser.py # Gemini response parser
+│
+├── data/
+│ └── uploads/ # Uploaded documents
+│
+└── metadata/
+└── indexed_files.json # Stored file hashes
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/rag-document-intelligence-system.git
+
+cd rag-document-intelligence-system

@@ -214,6 +214,10 @@ if question:
     # Retrieve documents
 
     docs = retrieve_documents(question)
+    st.write("Number of retrieved documents:", len(docs))
+
+    for doc in docs:
+        st.write(doc.page_content[:300])
 
 
     if len(docs) == 0:

@@ -8,5 +8,5 @@ def retrieve_documents(question):
 
     return vector_store.similarity_search(
         question,
-        k=TOP_K
+        k=6
     )
