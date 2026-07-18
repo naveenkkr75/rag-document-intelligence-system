@@ -1,9 +1,17 @@
-pip install langchain
-pip install langchain-community
-pip install langchain-google-genai
-pip install chromadb
-pip install sentence-transformers
-pip install pypdf
-pip install docx2txt
-pip install python-dotenv
-pip install streamlit
+streamlit
+python-dotenv
+
+langchain
+langchain-core
+langchain-community
+langchain-google-genai
+langchain-chroma
+langchain-huggingface
+langchain-text-splitters
+
+chromadb
+
+sentence-transformers
+
+pypdf
+docx2txt
