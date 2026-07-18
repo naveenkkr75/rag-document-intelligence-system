@@ -6,4 +6,6 @@ __pycache__/
 vector_db/
 metadata/indexed_files.json
 
+data/uploads/
+
 .DS_Store
